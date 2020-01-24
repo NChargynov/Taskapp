@@ -74,10 +74,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1 && resultCode == RESULT_OK && data != null) {
-            String getText = data.getStringExtra("InputText");
-            String task = data.getStringExtra("task");
-            Log.d("ololo", "Имя - " + task);
-            Log.d("ololo", "Фамилия - " + getText);
+            String textName = data.getStringExtra("textName");
+            String textSurname = data.getStringExtra("textSurname");
+            Log.d("ololo", "Имя - " + textName);
+            Log.d("ololo", "Фамилия - " + textSurname);
         }
     }
 }

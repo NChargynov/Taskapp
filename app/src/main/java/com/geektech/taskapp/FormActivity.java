@@ -9,7 +9,7 @@ import android.widget.EditText;
 
 public class FormActivity extends AppCompatActivity {
     private EditText editText;
-    EditText editDesk;
+    private EditText editDesk;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,11 +21,11 @@ public class FormActivity extends AppCompatActivity {
     }
 
     public void onClick(View view) {
-        String text = editText.getText().toString().trim();
-        String textDesk = editDesk.getText().toString().trim();
+        String textName = editText.getText().toString().trim();
+        String textSurname = editDesk.getText().toString().trim();
         Intent intent = new Intent();
-        intent.putExtra("task", text);
-        intent.putExtra("InputText", textDesk);
+        intent.putExtra("textName", textName);
+        intent.putExtra("textSurname", textSurname);
         setResult(RESULT_OK, intent);
         finish();
     }
