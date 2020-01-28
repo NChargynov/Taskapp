@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,9 +13,9 @@ import java.util.List;
 
 public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
 
-    List<String> list;
+    List<Task> list;
 
-    public TaskAdapter(List<String> list) {
+    public TaskAdapter(List<Task> list) {
         this.list = list;
     }
 
@@ -36,16 +37,18 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
         return list.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
-        private TextView textTitle;
+    public class ViewHolder extends RecyclerView.ViewHolder {
+        private TextView textViewTitle, textViewDesc;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            textTitle = itemView.findViewById(R.id.textTitle);
+            textViewTitle = itemView.findViewById(R.id.textViewTitle);
+            textViewDesc = itemView.findViewById(R.id.textViewDesc);
         }
 
-        public void bind(String s) {
-            textTitle.setText(s);
+        public void bind(Task task) {
+                textViewTitle.setText(task.getTitle());
+                textViewDesc.setText(task.getDesc());
         }
     }
 }

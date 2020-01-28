@@ -9,15 +9,16 @@
     tools:context=".FormActivity">
 
     <EditText
-        android:hint="Введите имя"
+        android:hint="Введите название задачи"
         android:id="@+id/editText"
         android:layout_width="match_parent"
         android:inputType="textCapSentences"
         android:layout_height="wrap_content"/>
     <EditText
         android:id="@+id/edit_desk"
-        android:hint="Введите фамилия"
+        android:hint="Введите описание задачи"
         android:layout_width="match_parent"
+        android:inputType="textCapSentences"
         android:layout_height="wrap_content"/>
 
     <Button
