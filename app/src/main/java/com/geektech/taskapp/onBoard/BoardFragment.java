@@ -1,6 +1,7 @@
 package com.geektech.taskapp.onBoard;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.geektech.taskapp.MainActivity;
@@ -45,30 +47,36 @@ public class BoardFragment extends Fragment {
         TextView textView = view.findViewById(R.id.textView);
         ImageView imageView = view.findViewById(R.id.imageView);
         Button button = view.findViewById(R.id.buttonStart);
+        LinearLayout fragmentBoard = view.findViewById(R.id.fragment_board);
 
         int pos = getArguments().getInt("pos");
-        switch (pos){
+        switch (pos) {
             case 0:
                 textView.setText("Google");
                 imageView.setImageResource(R.drawable.onboard_page1);
                 button.setVisibility(View.INVISIBLE);
+                fragmentBoard.setBackgroundColor(getResources().getColor(R.color.colorWhite));
                 break;
             case 1:
                 textView.setText("Apple");
+                textView.setTextColor(getResources().getColor(R.color.colorWhite));
                 button.setVisibility(View.INVISIBLE);
                 imageView.setImageResource(R.drawable.onboard_page2);
+                fragmentBoard.setBackgroundColor(getResources().getColor(R.color.colorBlack));
                 break;
             case 2:
                 textView.setText("Android");
                 button.setVisibility(View.VISIBLE);
                 imageView.setImageResource(R.drawable.onboard_page3);
+                fragmentBoard.setBackgroundColor(getResources().getColor(R.color.colorBlue));
                 break;
         }
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SharedPreferences preferences = getActivity().getSharedPreferences("settings", MODE_PRIVATE);
+                SharedPreferences preferences = getActivity().getSharedPreferences("settings",
+                        Context.MODE_PRIVATE);
                 preferences.edit().putBoolean("isShown", true).apply();
                 startActivity(new Intent(getContext(), MainActivity.class));
                 getActivity().finish();

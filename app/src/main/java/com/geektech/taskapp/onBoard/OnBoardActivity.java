@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.widget.Button;
 
 import com.geektech.taskapp.R;
+import com.google.android.material.tabs.TabLayout;
 
 public class OnBoardActivity extends AppCompatActivity {
 
@@ -22,6 +23,8 @@ public class OnBoardActivity extends AppCompatActivity {
         setContentView(R.layout.activity_on_board);
         viewPager = findViewById(R.id.viewPager);
         viewPager.setAdapter( new ViewPagerAdapter(getSupportFragmentManager()));
+        TabLayout tabLayout = findViewById(R.id.tab_layout);
+        tabLayout.setupWithViewPager(viewPager, true);
 
     }
 }

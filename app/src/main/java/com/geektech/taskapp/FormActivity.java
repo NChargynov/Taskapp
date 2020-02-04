@@ -26,9 +26,7 @@ public class FormActivity extends AppCompatActivity {
         String textTitle = editText.getText().toString().trim();
         String textDesc = editDesc.getText().toString().trim();
         if (editText.getText().toString().equals("") && editDesc.getText().toString().equals("")) {
-            Toast.makeText(getApplicationContext(),
-                    "Вы не ввели данные!",
-                    Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Вы не ввели данные!", Toast.LENGTH_SHORT).show();
         } else {
             Intent intent = new Intent();
             Task task = new Task(textTitle, textDesc);

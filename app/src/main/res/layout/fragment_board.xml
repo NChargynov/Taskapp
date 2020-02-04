@@ -2,11 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="32dp"
+    android:background="@android:color/holo_blue_light"
     android:gravity="center_horizontal"
-    tools:context=".onBoard.BoardFragment">
+    tools:context=".onBoard.BoardFragment"
+    android:id="@+id/fragment_board">
 
     <ImageView
         android:layout_marginTop="48dp"
@@ -31,5 +33,6 @@
         android:layout_height="wrap_content"
         android:textSize="25sp"
         android:text="Start"/>
+
 
 </LinearLayout>
