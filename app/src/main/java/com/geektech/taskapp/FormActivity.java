@@ -19,6 +19,7 @@ public class FormActivity extends AppCompatActivity {
         setContentView(R.layout.activity_form);
         editText = findViewById(R.id.editText);
         editDesc = findViewById(R.id.edit_desk);
+
     }
 
     public void onClick(View view) {

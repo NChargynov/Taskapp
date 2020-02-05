@@ -82,8 +82,8 @@ public class MainActivity extends AppCompatActivity {
     private void initFile() {
         String[] perms = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
         if (EasyPermissions.hasPermissions(this, perms)) {
-            File folder = new File(Environment.getExternalStorageDirectory(), "MyTaskApp");
-            folder.mkdir();
+            File folder = new File(Environment.getExternalStorageDirectory(), "MyTaskApp/Settings/Images");
+            folder.mkdirs();
             File file = new File(folder, "note2.txt");
             try {
                 file.createNewFile();
@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
         } else {
             EasyPermissions.requestPermissions(
                     this,
-                    "Разрешите пожалуйста",
+                    "Разрешите пожалуйста дать доступ к файлам вашего телефона?",
                     200,
                     perms);
         }
