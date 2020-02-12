@@ -5,7 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.bumptech.glide.Glide;
 
 public class FormActivity extends AppCompatActivity {
     private EditText editText;
@@ -19,6 +22,12 @@ public class FormActivity extends AppCompatActivity {
         setContentView(R.layout.activity_form);
         editText = findViewById(R.id.editText);
         editDesc = findViewById(R.id.edit_desk);
+        ImageView imageView = findViewById(R.id.imageView_phone);
+        imageView.setImageResource(R.drawable.ic_phone_iphone_black_24dp);
+        ImageView imageViewFlag = findViewById(R.id.imageViewFlag);
+        Glide.with(this).load(
+                "https://lh3.googleusercontent.com/proxy/Bf4InAT8L9Kzzbav3ywu7tg-JeCu-J8GHdRWWGkGN7QgbjccxjICAhVI6KxWcN4TQtiR7KS5CaHivHMj6HmZNlJ-1H8j4qXByL0_Ag")
+                .into(imageViewFlag);
         secondIntent();
 
 //        Intent intent = getIntent();
@@ -42,7 +51,9 @@ public class FormActivity extends AppCompatActivity {
         String textTitle = editText.getText().toString().trim();
         String textDesc = editDesc.getText().toString().trim();
         if (textTitle.isEmpty() || textDesc.isEmpty()) {
-            Toast.makeText(getApplicationContext(), "Вы не ввели данные!", Toast.LENGTH_SHORT).show();
+            Toaster.show("Вы не ввели данные");
+            editDesc.setError("Пустое поле");
+            editText.setError("Пустое поле");
         } else {
             if (task != null) {
                 task.setTitle(textTitle);

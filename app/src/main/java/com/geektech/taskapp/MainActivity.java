@@ -144,6 +144,10 @@ public class MainActivity extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
+    public void onClickOpenProfileActivity(View view) {
+        startActivity(new Intent(this, ProfileActivity.class));
+    }
+
 //    @Override
 //    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
 //        super.onActivityResult(requestCode, resultCode, data);

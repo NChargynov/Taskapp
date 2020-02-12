@@ -55,20 +55,20 @@ public class BoardFragment extends Fragment {
                 textView.setText("Google");
                 imageView.setImageResource(R.drawable.onboard_page1);
                 button.setVisibility(View.INVISIBLE);
-                fragmentBoard.setBackgroundColor(getResources().getColor(R.color.colorWhite));
+                fragmentBoard.setBackground(getResources().getDrawable(R.drawable.gradient_onboard));
                 break;
             case 1:
                 textView.setText("Apple");
                 textView.setTextColor(getResources().getColor(R.color.colorWhite));
                 button.setVisibility(View.INVISIBLE);
                 imageView.setImageResource(R.drawable.onboard_page2);
-                fragmentBoard.setBackgroundColor(getResources().getColor(R.color.colorBlack));
+                fragmentBoard.setBackground(getResources().getDrawable(R.drawable.gradient_onboard2));
                 break;
             case 2:
                 textView.setText("Android");
                 button.setVisibility(View.VISIBLE);
                 imageView.setImageResource(R.drawable.onboard_page3);
-                fragmentBoard.setBackgroundColor(getResources().getColor(R.color.colorBlue));
+                fragmentBoard.setBackground(getResources().getDrawable(R.drawable.gradient_onboard3));
                 break;
         }
 
