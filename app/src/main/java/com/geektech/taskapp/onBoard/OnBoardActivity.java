@@ -30,7 +30,6 @@ public class OnBoardActivity extends AppCompatActivity {
         viewPager.setAdapter( new ViewPagerAdapter(getSupportFragmentManager()));
         TabLayout tabLayout = findViewById(R.id.tab_layout);
         tabLayout.setupWithViewPager(viewPager, true);
-
     }
 
     public void clickSkip(View view) {

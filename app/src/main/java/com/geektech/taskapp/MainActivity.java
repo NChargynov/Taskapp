@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import com.geektech.taskapp.onBoard.OnBoardActivity;
+import com.geektech.taskapp.room.AppDataBase;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -32,8 +33,12 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
 
+import org.apache.commons.io.FileUtils;
+
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.EasyPermissions;
@@ -82,7 +87,8 @@ public class MainActivity extends AppCompatActivity {
     private void initFile() {
         String[] perms = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
         if (EasyPermissions.hasPermissions(this, perms)) {
-            File folder = new File(Environment.getExternalStorageDirectory(), "MyTaskApp/Settings/Images");
+            File folder = new File(Environment.getExternalStorageDirectory(), "MyTaskApp");
+            File mediaFile = new File(folder, "Media");
             folder.mkdirs();
             File file = new File(folder, "note2.txt");
             try {
@@ -90,6 +96,8 @@ public class MainActivity extends AppCompatActivity {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            File imageFile = new File(mediaFile, "image.png");
+            downloadFile(imageFile);
         } else {
             EasyPermissions.requestPermissions(
                     this,
@@ -97,6 +105,23 @@ public class MainActivity extends AppCompatActivity {
                     200,
                     perms);
         }
+    }
+
+    private void downloadFile(final File imageFile) {
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    URL url = new URL("https://square.github.io/picasso/static/debug.png");
+                    FileUtils.copyURLToFile(url, imageFile);
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        thread.start();
     }
 
     @Override
@@ -119,10 +144,10 @@ public class MainActivity extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
-        fragment.getChildFragmentManager().getFragments().get(0).onActivityResult(requestCode, resultCode, data);
-    }
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
+//        fragment.getChildFragmentManager().getFragments().get(0).onActivityResult(requestCode, resultCode, data);
+//    }
 }
